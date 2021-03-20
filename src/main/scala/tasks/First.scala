@@ -6,8 +6,18 @@ package tasks
 
 object First extends App {
 
-  val t = "asdasdaaaweqbbbbasdasd"
+  val t = "asdasdaaaweqbbbbasdasd".groupBy(_.toLower).toSeq.map(_._2).sortBy(- _.length).mkString
+  
 
-  assert(t == "aaaaaaassssddddbbbbwqe") // группы с одинаковым кол-вом символов могут быть в произвольном порядке, например “qwe” или “eqw”
+//    foldLeft("")((acc, e) => acc + e._2).foreach(print)
+
+  // группы с одинаковым кол-вом символов могут быть в произвольном порядке, например “qwe” или “eqw”
+  assert(t == "aaaaaaassssddddbbbbwqe" ||
+         t == "aaaaaaassssddddbbbbweq" ||
+         t == "aaaaaaassssddddbbbbqwe" ||
+         t == "aaaaaaassssddddbbbbqew" ||
+         t == "aaaaaaassssddddbbbbewq" ||
+         t == "aaaaaaassssddddbbbbeqw"
+  )
 
 }
