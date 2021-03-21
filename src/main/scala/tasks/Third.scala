@@ -6,10 +6,8 @@ import scala.io.StdIn
 object Third extends App {
 
   val pattern = """(?=[^\s]+)(?=(\w+)@([\w\.]+))""".r
-//  val valid = "valid@email.com"
-//  val invalid = "valid#em.ail.com"
 
-  def readInp = StdIn.readLine("email: ")
+  def readInp: String = StdIn.readLine("email: ")
 
   pattern.findFirstMatchIn(readInp) match {
     case Some(_) => println("Valid email")
