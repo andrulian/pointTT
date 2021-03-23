@@ -5,7 +5,7 @@ package tasks
 */
 object First extends App {
 
-  val t = "asdasdaaaweqbbbbasdasd".groupBy(_.toLower).toSeq.map(_._2).sortBy(- _.length).mkString
+  val t = "asdasdaaaweqbbbbasdasd".groupBy(identity).toSeq.map(_._2).sortBy(_.length)(Ordering[Int].reverse).mkString
 
   // группы с одинаковым кол-вом символов могут быть в произвольном порядке, например “qwe” или “eqw”
   assert(t == "aaaaaaassssddddbbbbwqe" ||
