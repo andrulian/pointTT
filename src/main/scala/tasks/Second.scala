@@ -7,6 +7,7 @@ object Second extends App {
 
   case class TreeNode[X](value: X, left: Option[TreeNode[X]], right: Option[TreeNode[X]])
 
+  /*
   def isSameTree[X](p: Option[TreeNode[X]], q: Option[TreeNode[X]]): Boolean = {
     (p, q) match {
       case (Some(f), Some(s)) =>
@@ -15,6 +16,23 @@ object Second extends App {
         else !f.right.exists(fr => s.right.exists(sr => !isSameTree(Some(fr), Some(sr))))
     }
   }
+  */
+
+  def isSameTree(p: Option[TreeNode[Int]], q: Option[TreeNode[Int]]): Boolean =
+    (p, q) match {
+
+      case (None, None) => true
+      case (None, _)    => false
+      case (_, None)    => false
+      case (
+        Some(TreeNode(pValue, pLeft, pRight)),
+        Some(TreeNode(qValue, qLeft, qRight))
+        ) =>
+        pValue == qValue && isSameTree(pLeft, qLeft) && isSameTree(
+          pRight,
+          qRight
+        )
+    }
 
   val simpleP = TreeNode(1, None, None)
   val simpleQ = TreeNode(1, None, None)
