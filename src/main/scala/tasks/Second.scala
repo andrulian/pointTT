@@ -20,18 +20,11 @@ object Second extends App {
 
   def isSameTree(p: Option[TreeNode[Int]], q: Option[TreeNode[Int]]): Boolean =
     (p, q) match {
-
       case (None, None) => true
       case (None, _)    => false
       case (_, None)    => false
-      case (
-        Some(TreeNode(pValue, pLeft, pRight)),
-        Some(TreeNode(qValue, qLeft, qRight))
-        ) =>
-        pValue == qValue && isSameTree(pLeft, qLeft) && isSameTree(
-          pRight,
-          qRight
-        )
+      case (Some(TreeNode(pValue, pLeft, pRight)), Some(TreeNode(qValue, qLeft, qRight))) =>
+        pValue == qValue && isSameTree(pLeft, qLeft) && isSameTree(pRight, qRight)
     }
 
   val simpleP = TreeNode(1, None, None)
